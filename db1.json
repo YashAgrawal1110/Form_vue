@@ -1,0 +1,222 @@
+{
+  "data": [
+    {
+      "id": "9c92",
+      "firstName": "yash",
+      "lastName": "agrawal",
+      "DateOfBirth": "2002-10-11",
+      "Age": 21,
+      "Email": "yash@gmail.com",
+      "hobbies": [
+        "music"
+      ],
+      "gender": "Male",
+      "pass": "Yash@1111"
+    },
+    {
+      "id": "4ba0",
+      "firstName": "om",
+      "lastName": "patel",
+      "DateOfBirth": "2003-11-11",
+      "Age": 20,
+      "Email": "john.simt.123@gmail.com",
+      "hobbies": [
+        "music"
+      ],
+      "gender": "Male",
+      "pass": "Asdf!21211"
+    },
+    {
+      "id": "d3db",
+      "firstName": "Yash",
+      "lastName": "Agrawal",
+      "DateOfBirth": "2002-10-11",
+      "Age": 21,
+      "Email": "d21it178@charusat.edu.in",
+      "hobbies": [
+        "music"
+      ],
+      "gender": "Male",
+      "pass": "Yash@1111"
+    },
+    {
+      "id": "fbc2",
+      "firstName": "Yash",
+      "lastName": "Agrawal",
+      "DateOfBirth": "2024-02-29",
+      "Age": 0,
+      "Email": "yash@charusat.edu.in",
+      "hobbies": [
+        "music",
+        "travel"
+      ],
+      "gender": "Male",
+      "pass": "Yash@1111"
+    },
+    {
+      "id": "92f0",
+      "firstName": "yash",
+      "lastName": "data3",
+      "DateOfBirth": "2024-03-02",
+      "Age": 0,
+      "Email": "simt.123@gmail.com",
+      "hobbies": [
+        "music",
+        "travel",
+        "sport"
+      ],
+      "gender": "Female",
+      "pass": "Asdf!21211"
+    },
+    {
+      "id": "6185",
+      "firstName": "Jeel",
+      "lastName": "Patel",
+      "DateOfBirth": "2001-06-10",
+      "Age": 22,
+      "Email": "jeelp66+123@gmail.com",
+      "hobbies": [
+        "travel",
+        "music",
+        "sport"
+      ],
+      "gender": "Female",
+      "pass": "abc@223133"
+    }
+  ],
+  "todo": [
+    {
+      "id": "b90d",
+      "createdBY": "9c92",
+      "task": "new 1",
+      "description": "dfsdf dfgdf df gdfg",
+      "isPass": "done"
+    },
+    {
+      "id": "a038",
+      "createdBY": "9c92",
+      "task": "new task 5",
+      "description": "ouihio klh kih hihh  ",
+      "isPass": "done"
+    },
+    {
+      "id": "5352",
+      "createdBY": "9c92",
+      "task": "new task 5",
+      "description": "ouihio klh kih hihh  ",
+      "isPass": "done"
+    },
+    {
+      "id": "7821",
+      "createdBY": "9c92",
+      "task": "new 2",
+      "description": "ghfdgh d gdkfghd dfkghd gkdfgh fgdl gkdfg dkf ghdflg dkfghkdlg",
+      "isPass": "false"
+    },
+    {
+      "id": "e949",
+      "createdBY": "6185",
+      "task": "",
+      "description": "",
+      "isPass": "done"
+    },
+    {
+      "id": "9402",
+      "createdBY": "6185",
+      "task": "",
+      "description": "",
+      "isPass": "done"
+    },
+    {
+      "id": "6557",
+      "createdBY": "6185",
+      "task": "",
+      "description": "",
+      "isPass": "done"
+    },
+    {
+      "id": "2cf0",
+      "createdBY": "6185",
+      "task": "",
+      "description": "",
+      "isPass": "done"
+    },
+    {
+      "id": "103e",
+      "createdBY": "6185",
+      "task": "",
+      "description": "",
+      "isPass": "done"
+    },
+    {
+      "id": "d923",
+      "createdBY": "6185",
+      "task": "",
+      "description": "",
+      "isPass": "done"
+    },
+    {
+      "id": "0423",
+      "createdBY": "6185",
+      "task": "",
+      "description": "",
+      "isPass": "done"
+    },
+    {
+      "id": "4773",
+      "createdBY": "6185",
+      "task": "",
+      "description": "",
+      "isPass": "done"
+    },
+    {
+      "id": "2337",
+      "createdBY": "6185",
+      "task": "",
+      "description": "",
+      "isPass": "done"
+    },
+    {
+      "id": "e4fd",
+      "createdBY": "6185",
+      "task": "",
+      "description": "",
+      "isPass": "done"
+    },
+    {
+      "id": "29ec",
+      "createdBY": "6185",
+      "task": "",
+      "description": "",
+      "isPass": "done"
+    },
+    {
+      "id": "347c",
+      "createdBY": "6185",
+      "task": "",
+      "description": "",
+      "isPass": "done"
+    },
+    {
+      "id": "110f",
+      "createdBY": "9c92",
+      "task": "trhtg",
+      "description": "tytry",
+      "isPass": "false"
+    },
+    {
+      "id": "a334",
+      "createdBY": "d3db",
+      "task": "ff",
+      "description": "ffffffffffff",
+      "isPass": "done"
+    },
+    {
+      "id": "470e",
+      "createdBY": "4ba0",
+      "task": "hhhh",
+      "description": "hhhhtrytrty  f fdk f fd f ",
+      "isPass": "false"
+    }
+  ]
+}

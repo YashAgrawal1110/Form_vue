@@ -1,0 +1,37 @@
+{
+  "user": [
+    {
+      "id": "e5d9",
+      "firstName": "",
+      "lastName": "",
+      "DateOfBirth": null,
+      "Age": "",
+      "Email": "",
+      "hobbies": [],
+      "gender": "Male",
+      "pass": ""
+    },
+    {
+      "id": "2a35",
+      "firstName": "",
+      "lastName": "",
+      "DateOfBirth": null,
+      "Age": "",
+      "Email": "",
+      "hobbies": [],
+      "gender": "Male",
+      "pass": ""
+    },
+    {
+      "id": "9918",
+      "firstName": "",
+      "lastName": "",
+      "DateOfBirth": null,
+      "Age": "",
+      "Email": "",
+      "hobbies": [],
+      "gender": "Male",
+      "pass": ""
+    }
+  ]
+}
