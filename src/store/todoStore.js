@@ -57,36 +57,45 @@ export const useTaskStore = defineStore("taskStore", {
       try {
         // const response = await axios.get(`http://localhost:3000/todo/${this.jkid}`);
         const response = await axios.get(`http://localhost:3000/todo?createdBY=${iddd}`);
-        this.tasks.push(response.data);
-        console.log(response);
+        this.tasks = (response.data);
+        console.log( this.tasks);
       } catch (error) {
         console.error('Error fetching task:', error);
       }
     },
-    deleteData(id) {
-      return axios.delete(`http://localhost:3000/todo/${id}`)
+   async deleteData(id) {
+    console.log("tgdfffffffffffffffffffffffffffffffffff",this.tasks)
+    // let a = []
+      await axios.delete(`http://localhost:3000/todo/${id}`)
         .then(response => {
           console.log(`Deleted post with ID ${id}`);
-          location.reload();
-
-    
-          return response // Optionally return the response if needed
+          console.log(response.data)
+          this.tasks
+          console.log("tgdfffffffffffffffffffffffffffffffffff",this.tasks)
+          // a =  this.tasks[0]
+          return this.tasks // Optionally return the response if needed
         })
         .catch(error => {
           console.error('Error deleting data:', error);
           throw error; // Optionally rethrow the error for handling elsewhere
         });
+        // this.tasks[0].forEach((e) => {
+          // this.tasks[0]
+        //   a.push(e)
+        // })
+        // console.log("dddddddddddddddddddddddddddddd",a)
     },
-    togglePass(id){
+   async togglePass(id){
       console.log(this.tasks)
       console.log(id)
       const data = this.tasks.find(t => t.id === id)
       // data.isPass = !data.isPass
       console.log(data)
-      location.reload(data);
-      // this.getTask()
+      this.tasks
+      // console.log(object)
+      // location.reload(data);
 
-      return axios.patch(`http://localhost:3000/todo/${id}`,{
+      return await axios.patch(`http://localhost:3000/todo/${id}`,{
           "isPass":"done"
       })
       

@@ -7,12 +7,16 @@
     <button id='logout' @click="logout">logout</button>
 </div>
 
+
+
+
   <!-- <div>dashboard</div> -->
   <div id="nav">
     <div class="main">
         <h3>Add Tasks</h3>
         <form>
           <label for="">Task</label>
+          <!-- <input type="text" placeholder="Task" v-model="addData"  @input="taskInput"/> -->
           <input type="text" placeholder="Task" v-model="addData"  @input="taskInput"/>
           <div id="taskerr"></div>
           <div v-show=" addData.length > 0 ">
@@ -22,6 +26,10 @@
           <label for="">Description</label>
           <textarea name="" id="" placeholder="Description" v-model="addDescription"  @input="desInput"></textarea>
           <div id="decerr"></div>
+          <div v-show=" addDescription.length > 0 ">
+        <p class="error" v-if="!isdesData">Task must be atleat 10 character</p>
+        <p class="noerror" v-else> valid</p>
+      </div>
             <div id="wrap">
               <button @click="add">Add</button>
             </div>
@@ -47,7 +55,7 @@
 </template>
 
 <script setup>
-import {  ref } from 'vue';
+import {  ref, defineProps } from 'vue';
 import {
     useRouter
 } from 'vue-router'
@@ -76,7 +84,7 @@ console.log(key)
 
 // console.log(object)
 taskStore.getdata1()
-taskStore.give
+// taskStore.give
 // console.log(taskStore.id)
 const id = taskStore.getid1()
 
@@ -89,22 +97,32 @@ const isdesData = ref(false)
 
 
 function taskInput(){
-  const taskRegex = /^[\w\d]{2,}/;
+  const taskRegex = /^[a-zA-Z0-9][\w\d\s]{1,}$/;
   isaddData.value = taskRegex.test(addData.value)
   console.log("tasssssssssssssssssssssssss",isaddData.value)
   if (!addData.value) {
     document.getElementById('taskerr').innerHTML = 'Task must be there'
+    document.getElementById('taskerr').style.color = 'red'
+
+  }else{
+    document.getElementById('taskerr').innerHTML = ''
+
   }
 
 }
 
 function desInput(){
-  const desRegex = /^[\w\d]{10,}/;
+  const desRegex = /^[a-zA-Z0-9][\w\d\s]{9,}$/;
   isdesData.value = desRegex.test(addDescription.value)
   console.log("tasssssssssssssssssssssssss",isdesData.value)
 
   if (!addDescription.value) {
     document.getElementById('decerr').innerHTML = 'Description must be there'
+    document.getElementById('decerr').style.color = 'red'
+
+  }
+  else{
+    document.getElementById('decerr').innerHTML = ''
   }
 
 }
@@ -113,12 +131,12 @@ function desInput(){
 
 function add(e){
   
-if (isaddData.value == true && isdesData.value == true) {
+if (isaddData.value == true && isdesData.value == true && addDescription.value.length > 0) {
   console.log(addData.value)
-  taskStore.getTask(addData.value)
+  taskStore.getTask()
   const data = {
   createdBY:id,
-  task:addData.value,
+  task:addData.value.trim(),
   description:addDescription.value,
   isPass:"false",
   
@@ -127,6 +145,12 @@ taskStore.post(data)
 toast("Task Added...",{
                 autoClose: 1000,
             })
+addData.value=""
+addDescription.value = ""
+document.getElementById('taskerr').innerHTML = ''
+
+document.getElementById('decerr').innerHTML = ''
+
 }else{
   document.getElementById('decerr').innerHTML = 'Description must be there'
   document.getElementById('decerr').style.color = 'red'
@@ -143,11 +167,21 @@ toast("Task Added...",{
 
 e.preventDefault();
 
-addData.value=""
-addDescription.value = ""
+
 }
 let date = new Date()
 console.log(Date.parse(date))
+
+defineProps({
+  taskk : String,
+  descriptions : String,
+  addData:String
+})
+
+
+
+
+
 </script>
  <style scoped>
 #navbar {
@@ -230,5 +264,11 @@ button {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+.error{
+  color: red;
+}
+.noerror{
+  color: green
 }
 </style>

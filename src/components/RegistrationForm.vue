@@ -195,22 +195,27 @@ function validateDate() {
     const days = Math.floor(diff / (1000 * 60 * 60 * 24))
     year = ref((Math.floor(days / 365)))
 
-    let input = document.getElementById('age')
-    input.setAttribute('value', year.value)
+    
+    if (birthDate.value >= maxDate.value) {
+        alert('The input date is in the future.');
+        year.value = ""
+        let input = document.getElementById('age')
+        input.setAttribute('value', year.value)
+        return isbirthDate.value = false
 
-    // watch(birthDate, (newValue) => {
-    //   if (!newValue) {
-    //     derrorMessage.value = 'Date of birth must be there';
-    //   } else {
-    //     derrorMessage.value = ''; // Clear the error message if date of birth is provided
-    //   }
-    // });
-    if (isNaN(birthDate.value)) {
+    }else if (isNaN(birthDate.value)) {
+    const current_date = new Date()
+    const diff = current_date - new Date(birthDate.value)
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24))
+    year = ref((Math.floor(days / 365)))
+      let input = document.getElementById('age')
+      input.setAttribute('value', year.value)
         return isbirthDate.value = true
     } else {
+        // year.value = ""
         // derrorMessage.value = 'Date of birth must be there';
-        return isbirthDate.value - false
-    }
+        return isbirthDate.value = false
+    }  
 }
 const emailInput = ref('');
 const isValidEmail = ref(false);
@@ -423,27 +428,67 @@ function validateConPassword() {
 async function submit() {
     const isValidNamee = nameInput.value
     const isValidLnamee = lnameInput.value;
-    const isbirthDatee = birthDate.value;
+    // const isbirthDatee = birthDate.value;
     const isValidEmaill = /\S+@\S+\.\S+/.test(emailInput.value);
     const isCheckedd = hobbiesInput.value;
     const isSelectedd = selected.value;
     // const isValidPasswordd = conPasswordInput.value;
 
 
-    axios.get("http://localhost:3000/data")
+    // axios.get("http://localhost:3000/data")
+    // .then((res) => {
+    //    const emailE = res.data.some((item) => item.Email == emailInput.value)
+    //     if (emailE) {
+    //         toast("Email Exist",{
+    //             autoClose: 1000,
+    //         })
+    //     } else if (isValidNamee && isValidLnamee && isbirthDatee && isValidEmaill && !isCheckedd && isSelectedd && isValidPasswordd) {
+    //     try {
+    //         // alert("Registering...");
+    //         toast("Registering...",{
+    //             autoClose: 1000,
+    //         })
+    //        axios.post("http://localhost:3000/data/", {
+    //             firstName: nameInput.value.trim(),
+    //             lastName: lnameInput.value.trim(),
+    //             DateOfBirth: birthDate.value.trim(),
+    //             Age: year.value,
+    //             Email: emailInput.value.trim(),
+    //             hobbies: hobbiesInput.value,
+    //             gender: radioInput.value,
+    //             pass: conPasswordInput.value.trim(),
+    //         });
+
+    //         // console.log("Data posted:", response.data);
+    //         router.push({
+    //             name: 'login'
+    //         })
+ 
+    //     } catch (error) {
+    //         console.error("Error:", error);
+    //     }
+    // } else {
+    //     toast("Please Fill the Form",{
+    //             autoClose: 1000,
+    //         })
+    // }
+    // })
+
+
+ axios.get("http://localhost:3000/data")
     .then((res) => {
        const emailE = res.data.some((item) => item.Email == emailInput.value)
         if (emailE) {
             toast("Email Exist",{
                 autoClose: 1000,
             })
-        } else if (isValidNamee && isValidLnamee && isbirthDatee && isValidEmaill && !isCheckedd && isSelectedd && isValidComPassword.value) {
+        } else if (isValidNamee && isValidLnamee && isbirthDate.value == true && isValidEmaill && isCheckedd && isSelectedd && isValidComPassword.value) {
         try {
             // alert("Registering...");
             toast("Registering...",{
                 autoClose: 1000,
             })
-           axios.post("http://localhost:3000/data/", {
+            axios.post("http://localhost:3000/data/", {
                 firstName: nameInput.value.trim(),
                 lastName: lnameInput.value.trim(),
                 DateOfBirth: birthDate.value.trim(),
@@ -467,44 +512,11 @@ async function submit() {
                 autoClose: 1000,
             })
     }
-    })
+})
 
 
 
-
-
-    // if (isValidNamee && isValidLnamee && isbirthDatee && isValidEmaill && isCheckedd && isSelectedd && isValidPasswordd) {
-    //     try {
-    //         // alert("Registering...");
-    //         toast("Registering...",{
-    //             autoClose: 1000,
-    //         })
-    //         const response = await axios.post("http://localhost:3000/data/", {
-    //             firstName: nameInput.value.trim(),
-    //             lastName: lnameInput.value.trim(),
-    //             DateOfBirth: birthDate.value.trim(),
-    //             Age: year.value,
-    //             Email: emailInput.value.trim(),
-    //             hobbies: hobbiesInput.value,
-    //             gender: radioInput.value,
-    //             pass: conPasswordInput.value.trim(),
-    //         });
-
-    //         console.log("Data posted:", response.data);
-    //         router.push({
-    //             name: 'login'
-    //         })
- 
-    //     } catch (error) {
-    //         console.error("Error:", error);
-    //     }
-    // } else {
-    //     toast("Please Fill the Form",{
-    //             autoClose: 1000,
-    //         })
-    // }
-
-
+    
 
     if (!isValidName.value) {
         document.getElementById('nameerr').innerHTML = "Please Enter First Name"
@@ -534,7 +546,7 @@ async function submit() {
       document.getElementById('passwordErr').innerHTML = "Please Enter Password"
     }
 
-    if (passwordInput.value != isValidComPassword.value) {
+    if (!isValidComPassword.value) {
         document.getElementById('conpasswordErr').innerHTML = "Please Enter samePassword"
     }
     // onMounted(fetchData);

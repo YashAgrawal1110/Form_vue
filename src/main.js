@@ -65,7 +65,7 @@ const router = createRouter({
         path: "/:catchAll(.*)",
         name:'notFound',
         component: notFound,
-        meta:{ requiresAuth: true, title:'notFound'}
+        meta:{ requiresAuth: false, title:'notFound'}
       },
     ]
     
