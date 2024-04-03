@@ -32,8 +32,8 @@
     </div>
     <div>
       <button @click="previous" :disabled="page === 1">Previous</button>
-      <span>Page {{ page }} of {{ totalPage }}</span>
-      <button @click="next" :disabled="page === totalPage">Next</button>
+      <span>Page {{ page1 }} of {{ totalPage }}</span>
+      <button @click="next" :disabled="page1 === totalPage">Next</button>
     </div>
 </div>
 
@@ -77,7 +77,7 @@
                 <div v-if="editMode && editingTaskId === task.id">
                   <input v-model="editedTask.task" /><br>
                    <textarea v-model="editedTask.description" rows="5" cols="62" /><br>
-                  <button @click="saveEdit(index)">save</button>
+                  <button @click="saveEdit(task.id)">save</button>
                 </div>
                 <div v-else>
                   <button @click="editTask(task.id, index)">edit</button> 
@@ -145,6 +145,7 @@ import axios from 'axios';
 import { useRouter } from 'vue-router';
 
 const page = ref(1);
+const page1 = ref(1)
 const limit = ref(5);
 const editMode = ref(false);
 const editingTaskId = ref(null);
@@ -173,7 +174,7 @@ const saveEdit = (index) => {
       description: editedTask.value.description,
     })
     .then(() => {
-      abc.value.splice(index, 1, editedTask.value);
+      getPaginatedData.value.splice(index, 1, editedTask.value);
       editMode.value = false;
       editingTaskId.value = null;
       editedTask.value = { id: null, task: '', description: '' };
@@ -282,19 +283,19 @@ const nextPage = () => {
 
 
 const getPaginated = computed(() => {
-  const start = (page.value - 1) * limit.value;
+  const start = (page1.value - 1) * limit.value;
   const end = start + limit.value;
   return abc.value.slice(start, end);
 });
 const totalPage = computed(() => Math.ceil(abc.value.length / limit.value));
 const previous = () => {
-  if (page.value > 1) {
-    page.value--;
+  if (page1.value > 1) {
+    page1.value--;
   }
 };
 const next= () => {
-  if (page.value < totalPage.value) {
-    page.value++;
+  if (page1.value < totalPage.value) {
+    page1.value++;
   }
 };
 
